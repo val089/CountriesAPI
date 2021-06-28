@@ -1,8 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const CountryItem = (props) => <div />;
-
-CountryItem.propTypes = {};
+const CountryItem = () => <div />;
 
 export default CountryItem;
