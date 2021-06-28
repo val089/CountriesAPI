@@ -25,6 +25,7 @@ module.exports = {
     ],
     'no-console': 1,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'react/prop-types': 'off',
   },
   settings: {
     'import/resolver': {
