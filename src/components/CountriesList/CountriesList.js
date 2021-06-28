@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';
 import CountryItem from 'components/CountryItem/CountryItem';
 
 const API_URL = 'https://restcountries.eu/rest/v2/name/united';
@@ -29,7 +28,7 @@ const CountriesList = () => {
       {isLoading && <p>Loading...</p>}
       {hasError && <p>An error has occurred</p>}
       {countries.length ? (
-        countries.map((country) => <CountryItem country={country} key={uuidv4()} />)
+        countries.map((country) => <CountryItem country={country} key={country.numericCode} />)
       ) : (
         <p>No countries available</p>
       )}
