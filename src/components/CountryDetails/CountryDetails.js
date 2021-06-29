@@ -12,48 +12,58 @@ const CountryDetails = ({ countries }) => {
     }
   }, [countries, countryId]);
 
-  if (country) {
-    return (
-      <div>
-        <p>{countries.name}</p>
-        <p>{countries.capital}</p>
+  return (
+    <>
+      {country ? (
         <div>
-          {countries.currencies.map((currency) => (
-            <div>
-              <p>{currency.symbol}</p>
-              <p>{currency.code}</p>
-              <p>{currency.name}</p>
-            </div>
-          ))}
+          <p>{country.name}</p>
+          <p>{country.capital}</p>
+          <div>
+            {country.currencies.map((currency) => (
+              <div key={currency.code}>
+                <p>{currency.symbol}</p>
+                <p>{currency.code}</p>
+                <p>{currency.name}</p>
+              </div>
+            ))}
+          </div>
+          <Link to="/">Back</Link>
         </div>
-      </div>
-    );
-  }
-  return <Link to="/">Back</Link>;
+      ) : (
+        <Link to="/">Back</Link>
+      )}
+    </>
+  );
 };
 
 CountryDetails.defaultProps = {
-  countries: PropTypes.shape({
-    name: 'Country Name',
-    capital: 'Country Capital',
-    currencies: PropTypes.shape({
-      symbol: 'Currency Symbol',
-      code: 'Currency Code',
-      name: 'Currency Name',
-    }),
-  }),
+  countries: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: 'Country Name',
+      capital: 'Country Capital',
+      currencies: PropTypes.shape({
+        symbol: 'Currency Symbol',
+        code: 'Currency Code',
+        name: 'Currency Name',
+      }),
+    })
+  ),
 };
 
 CountryDetails.propTypes = {
-  countries: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    capital: PropTypes.string.isRequired,
-    currencies: PropTypes.shape({
-      symbol: PropTypes.string.isRequired,
-      code: PropTypes.string.isRequired,
+  countries: PropTypes.arrayOf(
+    PropTypes.shape({
       name: PropTypes.string.isRequired,
-    }),
-  }),
+      capital: PropTypes.string.isRequired,
+      currencies: PropTypes.arrayOf(
+        PropTypes.shape({
+          symbol: PropTypes.string.isRequired,
+          code: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+        })
+      ),
+    })
+  ),
 };
 
 export default CountryDetails;
