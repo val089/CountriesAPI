@@ -5,12 +5,14 @@ import CountriesList from 'components/CountriesList/CountriesList';
 import Header from 'components/Header/Header';
 import { theme } from 'assets/styles/theme';
 
-const Root = () => (
-  <ThemeProvider theme={theme}>
-    <GlobalStyle />
-    <Header />
-    <CountriesList />
-  </ThemeProvider>
-);
+const Root = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Header />
+      <CountriesList />
+    </ThemeProvider>
+  );
+};
 
 export default Root;

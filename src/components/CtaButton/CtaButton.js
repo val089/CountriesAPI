@@ -1,15 +1,12 @@
 import styled from 'styled-components';
 
-const Button = styled.button`
+const CtaButton = styled.a`
   font-size: ${({ theme }) => theme.fontSize.m};
   background: ${({ theme }) => theme.colors.lightBlue};
   color: ${({ theme }) => theme.colors.darkBlue};
-  padding: 5px 10px;
-  margin: ${(props) => props.margin};
-  cursor: pointer;
+  padding: 10px 20px;
   border-radius: 6px;
   transition: 0.4s;
-  border: none;
 
   &:hover {
     background: ${({ theme }) => theme.colors.darkBlue};
@@ -17,4 +14,4 @@ const Button = styled.button`
   }
 `;
 
-export default Button;
+export default CtaButton;

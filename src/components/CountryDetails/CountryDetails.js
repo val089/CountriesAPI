@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
+import { Wrapper, StyledLink } from './CountryDetails.styles';
+import CurrencyItem from 'components/CurrencyItem/CurrencyItem';
 
 const CountryDetails = ({ countries }) => {
   const [country, setCountry] = useState();
@@ -8,46 +11,30 @@ const CountryDetails = ({ countries }) => {
 
   useEffect(() => {
     if (countries) {
-      setCountry(...countries.filter((item) => item.numericCode === countryId));
+      setCountry(...countries.filter((item) => item.id === countryId));
     }
   }, [countries, countryId]);
 
   return (
     <>
       {country ? (
-        <div>
-          <p>{country.name}</p>
-          <p>{country.capital}</p>
-          <div>
-            {country.currencies.map((currency) => (
-              <div key={currency.code}>
-                <p>{currency.symbol}</p>
-                <p>{currency.code}</p>
-                <p>{currency.name}</p>
-              </div>
-            ))}
-          </div>
-          <Link to="/">Back</Link>
-        </div>
+        <Wrapper>
+          <p>
+            Country: <span>{country.name ? country.name : 'Missing country name'}</span>
+          </p>
+          <p>
+            Capital: <span>{country.capital ? country.capital : 'Missing country capital'}</span>
+          </p>
+          {country.currencies.map((currency) => (
+            <CurrencyItem key={uuidv4()} currency={currency} />
+          ))}
+          <StyledLink to="/">Back</StyledLink>
+        </Wrapper>
       ) : (
-        <Link to="/">Back</Link>
+        <StyledLink to="/">Back</StyledLink>
       )}
     </>
   );
-};
-
-CountryDetails.defaultProps = {
-  countries: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: 'Country Name',
-      capital: 'Country Capital',
-      currencies: PropTypes.shape({
-        symbol: 'Currency Symbol',
-        code: 'Currency Code',
-        name: 'Currency Name',
-      }),
-    })
-  ),
 };
 
 CountryDetails.propTypes = {

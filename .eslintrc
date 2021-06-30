@@ -9,7 +9,8 @@
       "endOfLine": "auto",
       "trailingComma": "es5"
     }],
-    "no-console": 1
+    "no-console": 1,
+    "eqeqeq": 1
   },
   "env": {
     "browser": true,
