@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import PropTypes from 'prop-types';
-import { Wrapper, StyledLink } from './CountryDetails.styles';
+import { Animation, Wrapper, StyledLink } from './CountryDetails.styles';
 import CurrencyItem from 'components/CurrencyItem/CurrencyItem';
 
 const CountryDetails = ({ countries }) => {
@@ -16,7 +16,7 @@ const CountryDetails = ({ countries }) => {
   }, [countries, countryId]);
 
   return (
-    <>
+    <Animation>
       {country ? (
         <Wrapper>
           <p>
@@ -33,7 +33,7 @@ const CountryDetails = ({ countries }) => {
       ) : (
         <StyledLink to="/">Back</StyledLink>
       )}
-    </>
+    </Animation>
   );
 };
 

@@ -9,6 +9,7 @@ const CountryItem = ({ country: { name, id } }) => {
 CountryItem.propTypes = {
   country: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
   }),
 };
 
