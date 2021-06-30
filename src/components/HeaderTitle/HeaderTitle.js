@@ -1,6 +1,6 @@
 import React from 'react';
 import Title from 'components/Title/Title';
-import Button from 'components/Button/Button';
+import CtaButton from 'components/CtaButton/CtaButton';
 import StyledInfo from './HeaderTitle.styles';
 
 const HeaderTitle = () => {
@@ -9,7 +9,7 @@ const HeaderTitle = () => {
       <Title>Countries of The World</Title>
       <StyledInfo>Find your favourite country.</StyledInfo>
       <div>
-        <Button href="#planets">Let's start</Button>
+        <CtaButton href="#countries">Let's start</CtaButton>
       </div>
     </div>
   );

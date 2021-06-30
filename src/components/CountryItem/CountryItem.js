@@ -1,17 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import StyledLink from './CountryItem.styles';
 
-const CountryItem = ({ country: { name, numericCode } }) => (
-  <div>
-    <Link to={`/${numericCode}`}>{name}</Link>
-  </div>
-);
-
-CountryItem.defaultProps = {
-  country: PropTypes.shape({
-    name: 'Country Name',
-  }),
+const CountryItem = ({ country: { name, id } }) => {
+  return <StyledLink to={`/${id}`}>{name}</StyledLink>;
 };
 
 CountryItem.propTypes = {
