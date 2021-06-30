@@ -20,9 +20,9 @@ You’ll need to have **Node >= 10** on your local development machine.
 
 In the project directory, you can run:
 
-    yarn run serve
+    yarn run start
     or
-    npm run serve
+    npm run start
 
 Runs the app in the development mode.
 
