@@ -36,15 +36,15 @@ const Countries = () => {
               <TransitionGroup>
                 <CSSTransition timeout={300} classNames="page" key={location.key}>
                   <Switch location={location}>
-                    <Route path="/:countryId">
-                      <CountryDetails countries={countries} />
-                    </Route>
-                    <Route path="/">
+                    <Route path="/" exact>
                       <CountriesList
                         countries={countries}
                         isLoading={isLoading}
                         hasError={hasError}
                       />
+                    </Route>
+                    <Route path="/:countryId">
+                      <CountryDetails countries={countries} />
                     </Route>
                   </Switch>
                 </CSSTransition>
