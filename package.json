@@ -1,6 +1,5 @@
 {
   "name": "g4n-task",
-  "homepage": "https://val089.github.io/g4n-task/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
