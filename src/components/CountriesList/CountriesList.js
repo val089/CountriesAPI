@@ -17,7 +17,7 @@ const CountriesList = ({ countries, isLoading, hasError }) => {
 
   const searchCountry = (e) => {
     e.preventDefault();
-    const filteredCountries = countries.filter((country) => {
+    const filteredCountries = newCountries.filter((country) => {
       return country.name.toLowerCase().includes(search.toLocaleLowerCase());
     });
     setNewCountries(filteredCountries);
@@ -26,8 +26,8 @@ const CountriesList = ({ countries, isLoading, hasError }) => {
 
   const sortByName = () => {
     setOrderSort(!orderSort);
-    const sortedCountries = countries.sort((a, b) =>
-      orderSort ? b.name.localeCompare(a.name) : a.name.localeCompare(b.name)
+    const sortedCountries = newCountries.sort((a, b) =>
+      orderSort ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
     );
     setNewCountries(sortedCountries);
   };
@@ -43,6 +43,7 @@ const CountriesList = ({ countries, isLoading, hasError }) => {
         SORT BY NAME
       </Button>
       <StyledList>
+        {newCountries.length === 0 && <p>No results. Please refresh the page.</p>}
         {isLoading && <p>Loading...</p>}
         {hasError && <p>An error has occurred</p>}
         {newCountries &&

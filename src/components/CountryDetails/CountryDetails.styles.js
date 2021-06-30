@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
@@ -21,4 +21,36 @@ export const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.colors.white};
   text-align: center;
   border-radius: 6px;
+`;
+
+const fadeIn = keyframes`
+  from {
+    transform: scale(.25);
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    transform: scale(1);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(.25);
+    opacity: 1;
+  }
+`;
+
+export const Animation = styled.div`
+  &.page-enter {
+    animation: ${fadeIn} 0.2s;
+  }
+  &.page-exit {
+    animation: ${fadeOut} 0.2s;
+  }
 `;
