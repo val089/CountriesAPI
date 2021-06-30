@@ -10,5 +10,4 @@ export const StyledList = styled.section`
 export const Wrapper = styled.div`
   max-width: 1000px;
   margin: 40px auto;
-  text-align: center;
 `;
