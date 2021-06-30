@@ -9,11 +9,9 @@ import CountriesList from 'components/CountriesList/CountriesList';
 const API_URL = 'https://restcountries.eu/rest/v2/all?fields=name;capital;currencies';
 
 const Countries = () => {
-  const [search, setSearch] = useState('');
   const [countries, setCountries] = useState([]);
   const [isLoading, setLoading] = useState(false);
   const [hasError, setError] = useState(false);
-  const [orderSort, setOrderSort] = useState(false);
 
   useEffect(() => {
     axios
@@ -28,27 +26,6 @@ const Countries = () => {
       });
   }, []);
 
-  const searchCountry = (e) => {
-    e.preventDefault();
-    const filteredCountries = countries.filter((country) => {
-      return country.name.toLowerCase().includes(search.toLocaleLowerCase());
-    });
-    setCountries(filteredCountries);
-    setSearch('');
-  };
-
-  const sortByName = () => {
-    setOrderSort(!orderSort);
-    const sortedCountries = countries.sort((a, b) =>
-      orderSort ? b.name.localeCompare(a.name) : a.name.localeCompare(b.name)
-    );
-    setCountries(sortedCountries);
-  };
-
-  const handleChange = (e) => {
-    setSearch(e.target.value);
-  };
-
   return (
     <Wrapper id="countries">
       <Router>
@@ -57,15 +34,7 @@ const Countries = () => {
             <CountryDetails countries={countries} />
           </Route>
           <Route path="/">
-            <CountriesList
-              countries={countries}
-              value={search}
-              searchCountry={searchCountry}
-              onChange={handleChange}
-              sortByName={sortByName}
-              isLoading={isLoading}
-              hasError={hasError}
-            />
+            <CountriesList countries={countries} isLoading={isLoading} hasError={hasError} />
           </Route>
         </Switch>
       </Router>
