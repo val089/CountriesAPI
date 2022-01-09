@@ -7,7 +7,7 @@ import CountryDetails from 'components/CountryDetails/CountryDetails';
 import CountriesList from 'components/CountriesList/CountriesList';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-const API_URL = 'https://restcountries.eu/rest/v2/all?fields=name;capital;currencies';
+const API_URL = 'https://restcountries.com/v2/all?fields=name,capital,currencies';
 
 const Countries = () => {
   const [countries, setCountries] = useState([]);
